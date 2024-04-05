@@ -9,6 +9,8 @@
 
 ## Project Installation
 
+Requires NPM, Composer, PHP, and MySQL
+
 1. Clone the repository into the local machine
 2. Create a new .env file by copying the .env.example
 3. Generate APP_KEY in the .env file ```php artisan key:generate```
