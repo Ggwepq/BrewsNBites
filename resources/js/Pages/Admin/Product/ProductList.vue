@@ -1,11 +1,159 @@
 <script setup>
-import { usePage } from '@inertiajs/vue3';
+import { router, usePage } from '@inertiajs/vue3';
+import { ref } from 'vue'
 
 const products = usePage().props.products;
+const brands = usePage().props.brands;
+const categories = usePage().props.categories;
+
+const isAddingProduct = ref(false);
+const isEditingProduct = ref(false);
+const dialogVisible = ref(false);
+
+// Product from data
+const id = ref('');
+const title = ref('');
+const product_images = ref([]);
+const quantity = ref('');
+const price = ref('');
+const description = ref('');
+const category_id = ref('');
+const brand_id = ref('');
+const in_stock = ref('');
+const published = ref('');
+
+const productImages = ref([]);
+//end
+
+// Open add modal
+const openAddModal = () => {
+    console.log('opening add modal');
+    isAddingProduct.value = true;
+    dialogVisible.value = true;
+    isEditingProduct.value = false;
+}
+
+const AddProduct = async () => {
+    console.log('appending');
+    const formData = new FormData()
+    formData.append('title', title.value);
+    formData.append('quantity', quantity.value);
+    formData.append('price', price.value);
+    formData.append('description', description.value);
+    formData.append('category_id', category_id.value);
+    formData.append('brand_id', brand_id.value);
+    formData.append('in_stock', in_stock.value);
+    formData.append('published', published.value);
+
+    // Append product images in formData
+    for (const image of productImages.value) {
+        formData.append('product_images[]', image.raw);
+    }
+
+    try {
+        await router.post('products/store', formData, {
+            onSuccess: page => {
+                Swal.fire({
+                    toast: true,
+                    icon: 'success',
+                    position: 'top-end',
+                    showConfirmationButton: false,
+                    title: page.props.flash.success
+                });
+                console.log('onsuccess');
+                dialogVisible.value = false;
+                resetformData();
+            },
+        });
+        console.log('trying');
+    } catch (err) {
+        console.log(err);
+        console.log("hmmmmmmmm");
+    }
+}
+
+const resetformData = () => {
+    id.value = '';
+    title.value = '';
+    quantity.value = '';
+    price.value = '';
+    description.value = '';
+    productImages.value = '';
+    console.log('resetting');
+}
+
+const openEditModal = (product) => {
+    console.log('opening edit modal');
+    isEditingProduct.value = true;
+    isAddingProduct.value = false;
+    dialogVisible.value = true;
+}
 </script>
 
 <template>
     <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+
+        <!-- Dialog for adding and editing products -->
+        <el-dialog v-model="dialogVisible" :title="isEditingProduct ? 'Edit Product' : 'Add Product'" width="40%"
+            :before-close="handleClose">
+            <!-- Form Start -->
+            <form @submit.prevent="AddProduct" >
+                <div class="relative z-0 w-full mb-5 group">
+                    <input v-model="title" type="text" name="floating_title" id="floating_title"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="floating_title"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Title</label>
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="number" step="any" name="floating_price" id="floating_price"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required v-model="price" />
+                    <label for="floating_price"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Price</label>
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="number" name="qty" id="floating_qty"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required v-model="quantity" />
+                    <label for="floating_qty"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Quantity</label>
+                </div>
+
+                <!-- category select -->
+                <div>
+                    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Brand</label>
+                    <select id="countries" v-model="brand_id"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option v-for="brand in brands" :key="brand.id" :value="brand.id">{{ brand.name }}</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Category</label>
+                    <select id="countries" v-model="category_id"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
+                    </select>
+                </div>
+
+                <div class="grid md:gap-6">
+                    <div class="relative z-0 w-full mb-5 group">
+
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                        <textarea id="message" rows="4" v-model="description"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Describe your product..."></textarea>
+
+                    </div>
+                </div>
+                <button type="submit"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+            </form>
+            <!-- Form END -->
+        </el-dialog>
+        <!-- END -->
+
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
             <!-- Start coding here -->
             <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
@@ -31,7 +179,7 @@ const products = usePage().props.products;
                     </div>
                     <div
                         class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                        <button type="button"
+                        <button type="button" @click="openAddModal"
                             class="flex items-center justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-bue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                             <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -146,7 +294,8 @@ const products = usePage().props.products;
                         <tbody>
                             <tr v-for="product in products" :key="product.id" class="border-b dark:border-gray-700">
                                 <th scope="row"
-                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ product.title }}&#34;</th>
+                                    class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{
+            product.title }}&#34;</th>
                                 <td class="px-4 py-3">{{ product.category_id }}</td>
                                 <td class="px-4 py-3">{{ product.brand_id }}</td>
                                 <td class="px-4 py-3">{{ product.quantity }}</td>
@@ -173,8 +322,8 @@ const products = usePage().props.products;
                                                     class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
                                             </li>
                                             <li>
-                                                <a href="#"
-                                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
+                                                <button @click="openEditModal(product)"
+                                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</button>
                                             </li>
                                         </ul>
                                         <div class="py-1">

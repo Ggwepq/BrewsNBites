@@ -12,6 +12,8 @@ class Brand extends Model
     use HasSlug;
     use HasFactory;
 
+    protected $fillable = ['name', 'slug'];
+
     public function products(){
         return $this->hasMany(Product::class);
     }
