@@ -1,8 +1,8 @@
 <p align="center"><a href="https://github.com/Ggwepq/BrewsNBites"><img src="https://github.com/Ggwepq/BrewsNBites/blob/master/public/logo/logo.png" width="300" alt="BrewsNBites Logo"></a></p>
 <h2 align="center">BrewsNBites
-<p alight="center">
-· <a href="https://www.youtube.com/playlist?list=PL6u82dzQtlfv8fJF3gm42TDHJdtA2NDWT">Tutorial</a> · 
-<a href="https://drive.google.com/drive/folders/17vUbd_6jOOV59mbV9A3v0VVJblqdjN59">Progress Report</a> ·
+<p alight="center" style="color:red;font-size:12px;">
+· <a href="https://drive.google.com/drive/folders/17vUbd_6jOOV59mbV9A3v0VVJblqdjN59">Progress Report</a> ·
+<a href="https://www.youtube.com/playlist?list=PL6u82dzQtlfv8fJF3gm42TDHJdtA2NDWT">Tutorial</a> · 
 </p>
 </h2>
 
