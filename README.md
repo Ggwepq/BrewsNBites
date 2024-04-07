@@ -1,6 +1,6 @@
 <p align="center"><a href="https://github.com/Ggwepq/BrewsNBites"><img src="https://github.com/Ggwepq/BrewsNBites/blob/master/public/logo/logo.png" width="300" alt="BrewsNBites Logo"></a></p>
-##**<p align="center">BrewsNBites</p>**
-#####<p alight="center><a href="https://drive.google.com/drive/folders/17vUbd_6jOOV59mbV9A3v0VVJblqdjN59">Progress Report</a></p>
+<h2 align="center">BrewsNBites
+    <h5>Progress Report</h5></h2>
 
 ## About BrewsNBites
 
