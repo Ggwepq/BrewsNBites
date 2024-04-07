@@ -33,6 +33,19 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
+## Project Installation
+
+Requires NPM, Composer, PHP, and MySQL
+
+1. Clone the repository into the local machine
+2. Navigate to project root dir and install composer dependencies ```composer install```
+3. Install also npm packages ```npm install```
+4. Create a new .env file by copying the .env.example
+5. Generate APP_KEY in the .env file ```php artisan key:generate```
+6. Setup database ```localhost/phpmyadmin``` and edit the .env file
+7. Migrate models and tables to your database ```php artisan migrate```
+8. Run the project by ```php artisan serve``` and ```npm run dev```
+
 ### Premium Partners
 
 - **[Vehikl](https://vehikl.com/)**
