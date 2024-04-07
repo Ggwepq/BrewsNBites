@@ -7,19 +7,6 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Project Installation
-
-Requires NPM, Composer, PHP, and MySQL
-
-1. Clone the repository into the local machine
-2. Navigate to project root dir and install composer dependencies ```composer install```
-3. Install also npm packages ```npm install```
-4. Create a new .env file by copying the .env.example
-5. Generate APP_KEY in the .env file ```php artisan key:generate```
-6. Setup database ```localhost/phpmyadmin``` and edit the .env file
-7. Migrate models and tables to your database ```php artisan migrate```
-8. Run the project by ```php artisan serve``` and ```npm run dev```
-
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
