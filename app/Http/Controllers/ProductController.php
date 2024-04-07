@@ -8,6 +8,6 @@ use Inertia\Inertia;
 class ProductController extends Controller
 {
     public function index(){
-        return 'ok';
+        return Inertia::render('Admin/Product/Index');
     }
 }
