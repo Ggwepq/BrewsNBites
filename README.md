@@ -1,11 +1,5 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<p align="center"><img src="[https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg](https://scontent.fmnl8-1.fna.fbcdn.net/v/t1.15752-9/433865381_384804817791010_7661189955500806144_n.png?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH6tTbqUAbffDzvdkldRwlLsPnowq10av2w-ejCrXRq_X2qgLzK5atkPESUF0DLpDDxyYjSCnHBu3KtvOZpXDCx&_nc_ohc=xj7a65nMQkgAb4jcTd9&_nc_ht=scontent.fmnl8-1.fna&oh=03_AdXh2mr8GlFtPH8bMDxD9miqLp8V9QiS4RmdqUmyCDMkJg&oe=6639D234)" width="400" alt="BrewsNBites Logo"></p>
+<h2 align="center">BrewsNBites></h2>
 
 ## About BrewsNBites
 
@@ -33,6 +27,15 @@ Requires NPM, Composer, PHP, and MySQL
 - Rysel Balboa
 
 ***
+
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
 ## About Laravel
 
