@@ -10,6 +10,24 @@ const isAddingProduct = ref(false);
 const isEditingProduct = ref(false);
 const dialogVisible = ref(false);
 
+// Upload multiple Images
+const productImages = ref([]);
+const dialogImageUrl = ref('');
+
+const handleFileChange = (file) => {
+    console.log(file);
+    productImages.value.push(file);
+}
+
+const handlePictureCardPreview = (file) => {
+  dialogImageUrl.value = file.url
+  dialogVisible.value = true
+}
+
+const handleRemove = (file) => {
+  console.log(file)
+}
+
 // Product from data
 const id = ref('');
 const title = ref('');
@@ -22,19 +40,16 @@ const brand_id = ref('');
 const in_stock = ref('');
 const published = ref('');
 
-const productImages = ref([]);
 //end
 
 // Open add modal
 const openAddModal = () => {
-    console.log('opening add modal');
     isAddingProduct.value = true;
     dialogVisible.value = true;
     isEditingProduct.value = false;
 }
 
 const AddProduct = async () => {
-    console.log('appending');
     const formData = new FormData()
     formData.append('title', title.value);
     formData.append('quantity', quantity.value);
@@ -60,15 +75,12 @@ const AddProduct = async () => {
                     showConfirmationButton: false,
                     title: page.props.flash.success
                 });
-                console.log('onsuccess');
                 dialogVisible.value = false;
                 resetformData();
             },
         });
-        console.log('trying');
     } catch (err) {
         console.log(err);
-        console.log("hmmmmmmmm");
     }
 }
 
@@ -78,12 +90,10 @@ const resetformData = () => {
     quantity.value = '';
     price.value = '';
     description.value = '';
-    productImages.value = '';
-    console.log('resetting');
+    productImages.value = [];
 }
 
 const openEditModal = (product) => {
-    console.log('opening edit modal');
     isEditingProduct.value = true;
     isAddingProduct.value = false;
     dialogVisible.value = true;
@@ -97,7 +107,7 @@ const openEditModal = (product) => {
         <el-dialog v-model="dialogVisible" :title="isEditingProduct ? 'Edit Product' : 'Add Product'" width="40%"
             :before-close="handleClose">
             <!-- Form Start -->
-            <form @submit.prevent="AddProduct" >
+            <form @submit.prevent="AddProduct">
                 <div class="relative z-0 w-full mb-5 group">
                     <input v-model="title" type="text" name="floating_title" id="floating_title"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -122,7 +132,8 @@ const openEditModal = (product) => {
 
                 <!-- category select -->
                 <div>
-                    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Brand</label>
+                    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
+                        Brand</label>
                     <select id="countries" v-model="brand_id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option v-for="brand in brands" :key="brand.id" :value="brand.id">{{ brand.name }}</option>
@@ -130,23 +141,41 @@ const openEditModal = (product) => {
                 </div>
 
                 <div>
-                    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Category</label>
+                    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
+                        Category</label>
                     <select id="countries" v-model="category_id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
+                        <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name
+                            }}</option>
                     </select>
                 </div>
 
                 <div class="grid md:gap-6">
                     <div class="relative z-0 w-full mb-5 group">
 
-                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                        <label for="message"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                         <textarea id="message" rows="4" v-model="description"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Describe your product..."></textarea>
 
                     </div>
                 </div>
+
+                <!-- Multiple Image Upload -->
+                <div class="grid md:gap-6">
+                    <div class="relative z-0 w-full mb-5 group">
+                        <el-upload v-model:file-list="productImages"
+                            list-type="picture-card" multiple
+                            :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-change="handleFileChange">
+                            <el-icon>
+                                <Plus />
+                            </el-icon>
+                        </el-upload>
+                    </div>
+                </div>
+                <!-- END -->
+
                 <button type="submit"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
             </form>

@@ -14,12 +14,12 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Product::create([
-            'title' => 'Itlog ni Jollibee',
-            'price' => 123542.25,
-            'quantity' => 1,
+            'title' => 'Product 1',
+            'price' => 12,
+            'quantity' => 999,
             'category_id' => 2,
             'brand_id' => 1,
-            'description' => 'Ang itlog ni jollibee ay isang napakahiwagang substance na natatagpuan sa planetaang jollitown.'
+            'description' => 'Consequat ullamco pariatur et veniam ea sit. Ad dolore officia dolore ipsum enim est velit pariatur duis esse labore velit sint Lorem. Cupidatat esse ea duis laborum. Nulla adipisicing laborum do anim eu commodo proident cupidatat. Nisi cillum magna aute commodo commodo minim duis nulla laborum nostrud pariatur exercitation.'
         ]);
     }
 }

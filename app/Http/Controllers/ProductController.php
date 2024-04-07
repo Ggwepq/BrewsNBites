@@ -24,6 +24,7 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
+        // dd($request->file('product_images'));
         // Add new items to db
         $product = new Product();
         $product->title = $request->title;

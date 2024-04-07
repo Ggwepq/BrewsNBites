@@ -14,16 +14,16 @@ class BrandSeeder extends Seeder
     public function run(): void
     {
         Brand::create([
-            'name' => 'Dell',
-            'slug' => 'dell'
+            'name' => 'BrewsNBites',
+            'slug' => 'brewsnbites'
         ]);
         Brand::create([
-            'name' => 'Samsung',
-            'slug' => 'samsun'
+            'name' => 'Starbucks',
+            'slug' => 'starbucks'
         ]);
         Brand::create([
-            'name' => 'Apple',
-            'slug' => 'apple'
+            'name' => 'Big Brew',
+            'slug' => 'big-brew'
         ]);
     }
 }
