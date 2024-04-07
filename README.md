@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/Ggwepq/BrewsNBites"><img src="https://photos.app.goo.gl/49Cqr9UQAjoaiD9F7" width="400" alt="BrewsNBites Logo"></a></p>
+<p align="center"><a href="https://github.com/Ggwepq/BrewsNBites"><img src="https://github.com/Ggwepq/BrewsNBites/blob/master/public/logo/logo.png" width="400" alt="BrewsNBites Logo"></a></p>
 <h2 align="center">BrewsNBites></h2>
 
 ## About BrewsNBites
