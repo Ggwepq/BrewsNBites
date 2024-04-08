@@ -45,6 +45,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function(){
     Route::post('/products/store', [ProductController::class, 'store'])->name('admin.products.store');
     Route::put('/products/update/{id}', [ProductController::class, 'updateProduct'])->name('admin.products.update');
     Route::delete('/products/image/{id}', [ProductController::class, 'deleteImage'])->name('admin.products.image.delete');
+    Route::delete('/products/destroy/{id}', [ProductController::class, 'destroyProduct'])->name('admin.products.destroy');
 });
 
 // Admin Route End

@@ -143,6 +143,40 @@ const updateProduct = async () => {
     }
 }
 
+// Delete Product
+const deleteProduct = (product) => {
+    Swal.fire({
+        title: 'Are you Sure',
+        text: "This actions cannot undo!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'no',
+        confirmButtonText: 'yes, delete!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            try {
+                router.delete('products/destroy/' + product.id, {
+                    onSuccess: (page) => {
+                        Swal.fire({
+                            toast: true,
+                            icon: "success",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            title: page.props.flash.success
+                        });
+                        this.delete(product);
+                    }
+                })
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    })
+
+}
+
 
 const resetFormData = () => {
     id.value = '';
@@ -456,7 +490,7 @@ const openEditModal = (product) => {
                                             </li>
                                         </ul>
                                         <div class="py-1">
-                                            <a href="#"
+                                            <a href="#" @click="deleteProduct(product)"
                                                 class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
                                         </div>
                                     </div>
