@@ -32,9 +32,13 @@ Requires NPM, Composer, PHP, and MySQL
 
 ## Progress Report
 
-<!-- COMMIT_TABLE_START -->
-
-<!-- COMMIT_TABLE_END -->
+| Date	|	Progress Description	|
+|----------------|-------------------------------|
+| March 29, 2024 | *``- Project Planning 	``*		 |
+| April 4, 2024  | *``- Create new laravel project with vuejs and inertiajs. Setup admin authentication for admin login. Create admin dashboard with flowbite's ui library. Created a database schema for the ecommerce project. Setup database models and migrations. ``*
+| April 5, 2024 | *``- First git commit``* |
+| April 7, 2024 | *``- Created a product table for the admin. Show product list from database to product table list in the UI. Adding and editing products are implemented. Uploading and deleting multiple product images is supported.``*
+| April 8, 2024 | *``- Feature of deleting products is implemented. Create a new homepage for guest and user. Login and register button can link to respective destination.``*
 
 ***
 
