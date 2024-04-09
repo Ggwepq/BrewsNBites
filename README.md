@@ -25,10 +25,10 @@ Requires NPM, Composer, PHP, and MySQL
 ## Development Team
 - [Ggwepq](https://github.com/Ggwepq)
 - [CarlLatosa](https://github.com/Carllatosa)
-- Abodoo
-- Erica Salinas
-- Dianne Cruz
-- Rysel Balboa
+- [Abodoo](https://www.facebook.com/jay.cabotaje.7)
+- [Erica Salinas](https://www.facebook.com/ericasalinas912)
+- [Dianne Cruz](https://www.facebook.com/Crzdeyyy)
+- [Rysel Balboa](https://www.facebook.com/m28a1barrethttps://github.com/Carllatosa)
 
 ## Progress Report
 
