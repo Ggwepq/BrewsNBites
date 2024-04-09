@@ -146,14 +146,14 @@ const updateProduct = async () => {
 // Delete Product
 const deleteProduct = (product) => {
     Swal.fire({
-        title: 'Are you Sure',
-        text: "This actions cannot undo!",
+        title: 'Delete?',
+        text: "This action cannot be undone!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        cancelButtonText: 'no',
-        confirmButtonText: 'yes, delete!'
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'Continue'
     }).then((result) => {
         if (result.isConfirmed) {
             try {
