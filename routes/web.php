@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -44,5 +45,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function(){
 });
 
 // Admin Route End
+
+// Add to cart
+Route::prefix('cart')->controller(CartController::class)->group(function(){
+    Route::get('view','view')->name('cart.store');
+    Route::post('store/{product}', 'store')->name('cart.store');
+    Route::patch('update/{product}', 'update')->name('cart.name');
+    Route::delete('delete/{product}', 'delete')->name('cart.delete');
+});
 
 require __DIR__.'/auth.php';
