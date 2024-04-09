@@ -1,0 +1,25 @@
+name: Update README with Git Commits
+
+on:
+  push:
+    branches:
+      - master  # adjust this according to your branch name
+
+jobs:
+  update_readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Run Update Script
+        run: bash update.readme.sh
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git commit -m "Update README with latest commit history"
+          git push
