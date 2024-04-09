@@ -54,6 +54,7 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'cart added successfully');
     }
+
     public function update(Request $request, Product $product)
     {
         $quantity = $request->integer('quantity');
@@ -73,15 +74,16 @@ class CartController extends Controller
 
         return redirect()->back();
     }
+
     public function delete(Request $request, Product $product)
     {
         $user = $request->user();
         if ($user) {
             CartItem::query()->where(['user_id' => $user->id, 'product_id' => $product->id])->first()?->delete();
             if (CartItem::count() <= 0) {
-                return redirect()->route('home')->with('info', 'your cart is empty');
+                return redirect()->route('home')->with('info', 'Cart is empty');
             } else {
-                return redirect()->back()->with('success', 'item removed successfully');
+                return redirect()->back()->with('success', 'Item removed');
             }
         } else {
             $cartItems = Cart::getCookieCartItems();
@@ -93,9 +95,9 @@ class CartController extends Controller
             }
             Cart::setCookieCartItems($cartItems);
             if (count($cartItems) <= 0) {
-                return redirect()->route('home')->with('info', 'your cart is empty');
+                return redirect()->route('home')->with('info', 'Cart is empty');
             } else {
-                return redirect()->back()->with('success', 'item removed successfully');
+                return redirect()->back()->with('success', 'Item removed');
             }
         }
     }

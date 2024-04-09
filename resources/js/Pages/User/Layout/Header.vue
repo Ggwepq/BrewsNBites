@@ -1,10 +1,11 @@
 <script setup>
 import { Link, usePage } from '@inertiajs/vue3';
-
+import {computed} from 'vue';
 
 const canLogin = usePage().props.canLogin;
 const canRegister = usePage().props.canRegister;
 const auth = usePage().props.auth;
+const cart = computed(()=>usePage().props.cart);
 
 </script>
 
@@ -29,7 +30,7 @@ const auth = usePage().props.auth;
 
                 <span class="transition-all sr-only">cart</span>
                 <div
-                    class="transition-all absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900"></div>
+                    class="transition-all absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">{{ cart.data.count }}</div>
                 </Link>
 
                 <button v-if="auth.user" type="button"
