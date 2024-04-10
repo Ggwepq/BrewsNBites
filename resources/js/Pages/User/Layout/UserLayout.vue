@@ -21,11 +21,7 @@ onMounted(() => {
     </Header>
     <!-- Navbar End -->
 
-    <!-- Hero Section Staart -->
-    <Hero>
 
-    </Hero>
-    <!-- Hero End -->
 
     <!-- Main 1 Start-->
     <slot />

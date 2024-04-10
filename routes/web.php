@@ -48,9 +48,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function(){
 
 // Add to cart
 Route::prefix('cart')->controller(CartController::class)->group(function(){
-    Route::get('view','view')->name('cart.store');
+    Route::get('view','view')->name('cart.view');
     Route::post('store/{product}', 'store')->name('cart.store');
-    Route::patch('update/{product}', 'update')->name('cart.name');
+    Route::patch('update/{product}', 'update')->name('cart.update');
     Route::delete('delete/{product}', 'delete')->name('cart.delete');
 });
 

@@ -20,7 +20,7 @@ const cart = computed(()=>usePage().props.cart);
             </a>
             <div v-if="canLogin" class="transition-all flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
 
-                <Link href="#"
+                <Link :href="route('cart.view')"
                     class="transition-all relative inline-flex items-center p-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-7">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="transition-all w-6 h-6 ">
