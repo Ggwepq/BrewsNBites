@@ -40,6 +40,7 @@ Requires NPM, Composer, PHP, and MySQL
 | April 7, 2024 | *``- Created a product table for the admin. Show product list from database to product table list in the UI. Adding and editing products are implemented. Uploading and deleting multiple product images is supported.``*
 | April 8, 2024 | *``- Feature of deleting products is implemented. Create a new homepage for guest and user. Login and register button can link to respective destination.``*
 | April 9, 2024 | *``- Show products from the database in the homepage. Implement add to cart function. Display number of items stored in the cart.``*
+| April 10, 2024 | *``- Create a UI for the cart items. Increase and decrease quantity. Total Price change changes based on the quantity and product added in the cart.``*
 
 ***
 
