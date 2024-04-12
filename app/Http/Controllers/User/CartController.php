@@ -109,7 +109,8 @@ class CartController extends Controller
         if ($user) {
             CartItem::query()->where(['user_id' => $user->id, 'product_id' => $product->id])->first()?->delete();
             if (CartItem::count() <= 0) {
-                return redirect()->route('home')->with('info', 'Cart is empty');
+                // return redirect()->route('home')->with('info', 'Cart is empty');
+                return redirect()->route('user.home')->with('info', 'No items in cart');
             } else {
                 return redirect()->back()->with('success', 'Item removed');
             }
@@ -123,7 +124,8 @@ class CartController extends Controller
             }
             Cart::setCookieCartItems($cartItems);
             if (count($cartItems) <= 0) {
-                return redirect()->route('home')->with('info', 'Cart is empty');
+                // return redirect()->route('home')->with('info', 'Cart is empty');
+                return redirect()->back()->with('info', 'Cart is Empty');
             } else {
                 return redirect()->back()->with('success', 'Item removed');
             }
