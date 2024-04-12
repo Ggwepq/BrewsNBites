@@ -15,7 +15,7 @@ const cart = computed(()=>usePage().props.cart);
     <nav class="transition-all bg-white border-gray-200 dark:bg-gray-900">
         <div class="transition-all max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a :href="route('user.home')" class="transition-all flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="https://flowbite.com/docs/images/logo.svg" class="transition-all h-8" alt="Flowbite Logo" />
+                <img src="logo/logo.png" class="transition-all h-12" alt="BrewsNBites Logo" />
                 <span class="transition-all self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BrewsNBites</span>
             </a>
             <div v-if="canLogin" class="transition-all flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">

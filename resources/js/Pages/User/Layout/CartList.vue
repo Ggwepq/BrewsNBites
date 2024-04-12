@@ -49,9 +49,9 @@ const remove = (product) => router.delete(route('cart.delete', product));
                         <tbody>
                             <tr v-for="product in products" :key="product.id"
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="p-4">
+                                <td class="p-4 w-60">
                                     <img v-if="product.product_images.length > 0"
-                                        :src="`/${product.product_images[0].image}`" alt="Apple Watch">
+                                        :src="`/${product.product_images[0].image}`" alt="Apple Watch" class="h-auto max-w-full">
                                 </td>
                                 <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                                     {{ product.title }}
