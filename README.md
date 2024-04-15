@@ -11,12 +11,12 @@ BrewsNBites is a Ecommerce web application that sells coffee, desserts, and food
 
 ## Project Installation
 
-Requires NPM, Composer, PHP, and MySQL
+Requires [NPM](https://nodejs.org/en), [Composer](https://getcomposer.org/download/), [XAMPP](https://www.apachefriends.org/download.html), and [GIT](https://git-scm.com/downloads).
 
-1. Clone the repository into the local machine
-2. Navigate to project root dir and install composer dependencies ```composer install```
+1. Clone the repository into your local machine
+2. Navigate to project root directory and install composer dependencies ```composer install```
 3. Install also npm packages ```npm install```
-4. Create a new .env file by copying the .env.example
+4. Create a new .env file by copying the .env.example ```cp .env.example .env```
 5. Generate APP_KEY in the .env file ```php artisan key:generate```
 6. Setup database ```localhost/phpmyadmin``` and edit the .env file
 7. Migrate models and tables to your database ```php artisan migrate```
