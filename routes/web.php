@@ -5,7 +5,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\ProductListController;
 use App\Http\Controllers\User\UserController;
+use App\Models\Product;
+use Illuminate\Database\Query\IndexHint;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -52,6 +55,12 @@ Route::prefix('cart')->controller(CartController::class)->group(function(){
     Route::post('store/{product}', 'store')->name('cart.store');
     Route::patch('update/{product}', 'update')->name('cart.update');
     Route::delete('delete/{product}', 'delete')->name('cart.delete');
+});
+
+// Routes for product list and filter
+Route::prefix('products')->controller(ProductListController::class)->group(function () {
+    Route::get('/','index')->name('products.index');
+
 });
 
 require __DIR__.'/auth.php';
