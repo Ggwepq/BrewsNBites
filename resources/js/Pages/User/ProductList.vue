@@ -2,8 +2,12 @@
 import UserLayout from './Layout/UserLayout.vue';
 import Products from '../User/Components/Products.vue'
 import { ref } from 'vue'
+import { router, useForm } from '@inertiajs/vue3'
+
+// Headless HeroIcons
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/vue/20/solid'
+import SecondaryButtonVue from '@/Components/SecondaryButton.vue';
 import {
     Dialog,
     DialogPanel,
@@ -34,54 +38,34 @@ const subCategories = [
     { name: 'Laptop Sleeves', href: '#' },
 ]
 
-const filters = [
-    {
-        id: 'color',
-        name: 'Color',
-        options: [
-            { value: 'white', label: 'White', checked: false },
-            { value: 'beige', label: 'Beige', checked: false },
-            { value: 'blue', label: 'Blue', checked: true },
-            { value: 'brown', label: 'Brown', checked: false },
-            { value: 'green', label: 'Green', checked: false },
-            { value: 'purple', label: 'Purple', checked: false },
-        ],
-    },
-    {
-        id: 'category',
-        name: 'Category',
-        options: [
-            { value: 'new-arrivals', label: 'New Arrivals', checked: false },
-            { value: 'sale', label: 'Sale', checked: false },
-            { value: 'travel', label: 'Travel', checked: true },
-            { value: 'organization', label: 'Organization', checked: false },
-            { value: 'accessories', label: 'Accessories', checked: false },
-        ],
-    },
-    {
-        id: 'size',
-        name: 'Size',
-        options: [
-            { value: '2l', label: '2L', checked: false },
-            { value: '6l', label: '6L', checked: false },
-            { value: '12l', label: '12L', checked: false },
-            { value: '18l', label: '18L', checked: false },
-            { value: '20l', label: '20L', checked: false },
-            { value: '40l', label: '40L', checked: true },
-        ],
-    },
-]
-
 const mobileFiltersOpen = ref(false)
 
 const props = defineProps({
-    products: Array
+    products: Array,
+    categories: Array,
+    brands: Array
 })
+
+const filterPrices = useForm({
+    prices:[1,100000]
+})
+
+const priceFilter = () => {
+    filterPrices.transform((data) => ({
+        ...data,
+        prices: {
+            from: filterPrices.prices[0],
+            to: filterPrices.prices[1]
+        }
+    })).get('products', {
+        preserveState:true,
+        replace:true
+    })
+}
 
 </script>
 
 <template>
-
     <UserLayout>
 
         <div class="bg-white">
@@ -209,13 +193,32 @@ const props = defineProps({
                         <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                             <!-- Filters -->
                             <form class="hidden lg:block">
-                                <h3 class="sr-only">Categories</h3>
-                                <ul role="list"
-                                    class="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-                                    <li v-for="category in subCategories" :key="category.name">
-                                        <a :href="category.href">{{ category.name }}</a>
-                                    </li>
-                                </ul>
+                                <h3 class="sr-only">Prices</h3>
+
+                                <div class="flex items-center justify-between space-x-3">
+                                    <div class="basis-1/3">
+                                        <label for="filters-price-from"
+                                            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                                            From
+                                        </label>
+
+                                        <input type="number" id="filters-price-from" placeholder="Min. price" v-model="filterPrices.prices[0]"
+                                            class="block w-full rounded-lg border border-gray-150 bg-gray-25 p-2.5 text-sm text-gray-9">
+                                    </div>
+                                    <div class="basis-1/3">
+                                        <label for="filters-price-to"
+                                            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                                            To
+                                        </label>
+
+                                        <input type="number" id="filters-price-to" placeholder="Max price" v-model="filterPrices.prices[1]"
+                                            class="block w-full rounded-lg border border-gray-150 bg-gray-25 p-2.5 text-sm text-gray-9">
+                                    </div>
+                                    <SecondaryButtonVue class="self-end" :disabled="filters.processing"
+                                        @click="priceFilter()">
+                                        Ok
+                                    </SecondaryButtonVue>
+                                </div>
 
                                 <Disclosure as="div" v-for="section in filters" :key="section.id"
                                     class="border-b border-gray-200 py-6" v-slot="{ open }">
@@ -248,7 +251,7 @@ const props = defineProps({
                             <div class="lg:col-span-3">
                                 <!-- Your content -->
 
-                                <Products :products="products"></Products>
+                                <Products :products="products.data"></Products>
 
                             </div>
                         </div>
@@ -258,5 +261,4 @@ const props = defineProps({
         </div>
 
     </UserLayout>
-
 </template>  
