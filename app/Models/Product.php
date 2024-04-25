@@ -53,15 +53,11 @@ class Product extends Model
     public function scopeFiltered(Builder $quary) {
         $quary
         ->when(request('brands'), function(Builder $q) {
-            $q->withIn('brand_id', request('brands'));
-        })
-
-        ->when(request('brands'), function(Builder $q) {
-            $q->withIn('brand_id', request('brands'));
+            $q->whereIn('brand_id', request('brands'));
         })
 
         ->when(request('categories'), function(Builder $q) {
-            $q->withIn('category_id', request('categories'));
+            $q->whereIn('category_id', request('categories'));
         })
 
         ->when(request('prices'), function(Builder $q) {
