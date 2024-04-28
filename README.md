@@ -41,6 +41,9 @@ Requires [NPM](https://nodejs.org/en), [Composer](https://getcomposer.org/downlo
 | April 8, 2024 | *``- Feature of deleting products is implemented. Create a new homepage for guest and user. Login and register button can link to respective destination.``*
 | April 9, 2024 | *``- Show products from the database in the homepage. Implement add to cart function. Display number of items stored in the cart.``*
 | April 10, 2024 | *``- Create a UI for the cart items. Increase and decrease quantity. Total Price change changes based on the quantity and product added in the cart.``*
+| April 12, 2024 | *``- Fix image issues and link redirections.``*
+| April 21, 2024 | *``- Create a new page to view all list of products in the database.``*
+| April 25, 2024 | *``- User can now filter products based on price range, category, and brands. Fixes some logout and add to cart issues.``*
 
 ***
 
