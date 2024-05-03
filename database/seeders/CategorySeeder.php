@@ -14,20 +14,20 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Catergory::create([
-            'name' => 'Drinks',
-            'slug' => 'drinks'
+            'name' => 'Iced Coffe',
+            'slug' => 'iced-coffee'
         ]);
         Catergory::create([
-            'name' => 'Food',
-            'slug' => 'food'
+            'name' => 'Hot Coffee',
+            'slug' => 'hot-coffee'
         ]);
         Catergory::create([
-            'name' => 'Pastries',
-            'slug' => 'pastries'
+            'name' => 'Frappe',
+            'slug' => 'frappe'
         ]);
         Catergory::create([
-            'name' => 'Beans',
-            'slug' => 'beans'
+            'name' => 'Tea',
+            'slug' => 'tea'
         ]);
     }
 }
