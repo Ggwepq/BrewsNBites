@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('address1', 255);
             $table->string('address2', 255)->nullable();
             $table->string('city', 255);
-            $table->string('state', 45)->nullable();
+            $table->string('region', 45)->nullable();
             $table->string('zipcode', 45);
             $table->boolean('is_main')->default(1);
             $table->string('country_code', 3);
