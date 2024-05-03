@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\ProductListController;
 use App\Http\Controllers\User\UserController;
 use App\Models\Product;
@@ -25,6 +26,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Checkout
+    Route::prefix('checkout')->controller(CheckoutController::class)->group((function(){
+        Route::post('order', 'store')->name('checkout.store');
+    }));
+
+
 });
 // User Route End
 
