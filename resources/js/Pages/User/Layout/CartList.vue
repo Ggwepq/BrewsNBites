@@ -8,6 +8,12 @@ const products = computed(() => usePage().props.cart.data.products)
 const total = computed(() => usePage().props.cart.data.total)
 const itemId = (id) => carts.value.findIndex((item) => item.product_id === id);
 
+// Price formatter
+const price = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'PHP'
+});
+
 const update = (product, quantity) => 
     router.patch(route('cart.update', product), {
         quantity,
@@ -88,7 +94,7 @@ const remove = (product) => router.delete(route('cart.delete', product));
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                                    ₱ {{product.price}}
+                                    {{price.format(product.price)}} 
                                 </td>
                                 <td class="px-6 py-4">
                                     <a @click="remove(product)"
@@ -104,7 +110,7 @@ const remove = (product) => router.delete(route('cart.delete', product));
                 </div>
                 <div class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
                     <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">Summary</h2>
-                    <p class="leading-relaxed mb-5 text-gray-600">Total: ₱ {{ total }}</p>
+                    <p class="leading-relaxed mb-5 text-gray-600">Total: {{price.format(total)}}</p>
                     <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">Shipping Address</h2>
                     <p class="leading-relaxed mb-5 text-gray-600">1234, Latosa St., Caloocan City, Philippines</p>
                     <p class="leading-relaxed mb-5 text-gray-600">Add Address</p>
