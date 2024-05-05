@@ -6,26 +6,35 @@
 ***
 
 ## About BrewsNBites
+BrewsNBites is a Online Website where users can buy and order various kinds of coffees and foods to satisfy their hungry stomach.
 
-BrewsNBites is a Ecommerce web application that sells coffee, desserts, and foods for the users. It uses Laravel as the main development framework with Vue.js & Inertia.js for the frontend. BrewsNBites takes inspiration for its product from a cafe site [Coffee Project](https://coffeeproject.com.ph/). We are very greatful for the Coffee Project website as it have many products which we take as an example for this project of ours. We custom made the logo for the site and for the products as well. Same goes with the website layout and design. We believe that just copying and watching from a tutorial won't give us most of the knowledge that's why we take it as a challenge to customized the website for our preference and for the theme of the project.
+## Features
+- Beautiful homepage
+- Add to cart function
+- Product description
+- Filter search
+- Dashboard w/ Sales Graph
+- Adding and editing product
+- Multiple Image support
 
 ## Project Installation
 
 Requires [NPM](https://nodejs.org/en), [Composer](https://getcomposer.org/download/), [XAMPP](https://www.apachefriends.org/download.html), and [GIT](https://git-scm.com/downloads).
 
-1. Clone the repository into your local machine
-2. Navigate to project root directory and install composer dependencies ```composer install```
-3. Install also npm packages ```npm install```
+1. Clone the repository into your local machine ```git clone```
+2. Navigate to project root directory ```cd BrewsNBites```
+3. Install also npm packages ```npm install``` and composer dependencies ```composer install```
 4. Create a new .env file by copying the .env.example ```cp .env.example .env```
 5. Generate APP_KEY in the .env file ```php artisan key:generate```
 6. Setup database ```localhost/phpmyadmin``` and edit the .env file
 7. Migrate models and tables to your database ```php artisan migrate```
-8. Run the project by ```php artisan serve``` and ```npm run dev```
+8. Create an account in [Stripe](https://stripe.com/), get your secret key and put it in the .env file
+9. Run the project by ```php artisan serve``` and ```npm run dev```
 
 ## Development Team
 - [Ggwepq](https://github.com/Ggwepq)
-- [CarlLatosa](https://github.com/Carllatosa)
-- [Abodoo](https://www.facebook.com/jay.cabotaje.7)
+- [Carl Jimuel Latosa](https://github.com/Carllatosa)
+- [Jay-m Motel](https://www.facebook.com/jay.cabotaje.7)
 - [Erica Salinas](https://www.facebook.com/ericasalinas912)
 - [Dianne Cruz](https://www.facebook.com/Crzdeyyy)
 - [Rysel Balboa](https://www.facebook.com/m28a1barrethttps://github.com/Carllatosa)
@@ -44,6 +53,7 @@ Requires [NPM](https://nodejs.org/en), [Composer](https://getcomposer.org/downlo
 | April 12, 2024 | *``- Fix image issues and link redirections.``*
 | April 21, 2024 | *``- Create a new page to view all list of products in the database.``*
 | April 25, 2024 | *``- User can now filter products based on price range, category, and brands. Fixes some logout and add to cart issues.``*
+| May 3, 2024 | *``- Strip checkout payment method was added. User can now save its primary address for the order.``*
 
 ***
 
