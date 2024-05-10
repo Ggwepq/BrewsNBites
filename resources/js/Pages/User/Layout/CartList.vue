@@ -153,7 +153,7 @@ function submit() {
 
                     <div v-if="userAddress">
                         <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">Shipping Address</h2>
-                        <p class="leading-relaxed mb-5 text-gray-600">{{ addressForm.address1 }}, {{ addressForm.city }}, {{addressForm.region}}, {{addressForm.country_code}}</p>
+                        <p class="leading-relaxed mb-5 text-gray-600">{{ userAddress.address1 }}, {{ userAddress.city }}, {{userAddress.region}}, {{userAddress.country_code}}</p>
                         <p class="leading-relaxed mb-5 text-gray-600">Or Add Below</p>
                     </div>
 
