@@ -22,6 +22,12 @@ const addToCart = (product) => {
     })
 }
 
+// Price formatter
+const price = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'PHP'
+});
+
 </script>
 
 <template>
@@ -75,7 +81,7 @@ const addToCart = (product) => {
                     </h3>
                     <p class="mt-1 text-sm text-gray-500">{{ product.brand.name }}</p>
                 </div>
-                <p class="text-sm font-medium text-gray-900">${{ product.price }}</p>
+                <p class="text-sm font-medium text-gray-900">{{ price.format(product.price) }}</p>
             </div>
         </div>
     </div>

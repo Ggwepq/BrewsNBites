@@ -18,8 +18,8 @@ use Inertia\Inertia;
 Route::get('/', [UserController::class, 'index'])->name('user.home');
 
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+Route::get('/dash', function () {
+    return Inertia::render('User/index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

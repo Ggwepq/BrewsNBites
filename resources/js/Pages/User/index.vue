@@ -8,7 +8,6 @@ defineProps({
     products: Array
 })
 
-
 </script>
 
 <template>

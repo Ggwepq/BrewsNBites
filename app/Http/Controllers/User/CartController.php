@@ -16,6 +16,8 @@ class CartController extends Controller
     public function view(Request $request, Product $product)
     {
         $user = $request->user();
+
+        
         if ($user) {
             $cartItems = CartItem::where('user_id', $user->id)->get();
             $userAddress = UserAddress::where('user_id', $user->id)->where('is_main', 1)->first();
