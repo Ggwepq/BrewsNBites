@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\ProductListController;
 use App\Http\Controllers\User\UserController;
 use App\Models\Product;
@@ -13,14 +14,13 @@ use Illuminate\Database\Query\IndexHint;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 // User Route
 Route::get('/', [UserController::class, 'index'])->name('user.home');
 
 
-Route::get('/dash', function () {
-    return Inertia::render('User/index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/Dashboard',[DashboardController:: class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

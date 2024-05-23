@@ -36,7 +36,7 @@ const addressForm = reactive({
 })
 
 const formFilled = computed(() => {
-    return(addressForm.address1 != null &&
+    return (addressForm.address1 != null &&
         addressForm.city != null &&
         addressForm.region != null &&
         addressForm.zipcode != null &&
@@ -110,8 +110,8 @@ function submit() {
                                             <span class="sr-only">Quantity button</span>
                                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                 fill="none" viewBox="0 0 18 2">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" d="M1 1h16" />
                                             </svg>
                                         </button>
                                         <div>
@@ -126,8 +126,8 @@ function submit() {
                                             <span class="sr-only">Quantity button</span>
                                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                 fill="none" viewBox="0 0 18 18">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" d="M9 1v16M1 9h16" />
                                             </svg>
                                         </button>
                                     </div>
@@ -153,7 +153,8 @@ function submit() {
 
                     <div v-if="userAddress">
                         <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">Shipping Address</h2>
-                        <p class="leading-relaxed mb-5 text-gray-600">{{ userAddress.address1 }}, {{ userAddress.city }}, {{userAddress.region}}, {{userAddress.country_code}}</p>
+                        <p class="leading-relaxed mb-5 text-gray-600">{{ userAddress.address1 }}, {{ userAddress.city }},
+                            {{ userAddress.region }}, {{ userAddress.country_code }}</p>
                         <p class="leading-relaxed mb-5 text-gray-600">Or Add Below</p>
                     </div>
 
@@ -164,7 +165,7 @@ function submit() {
 
                     <form @submit.prevent="submit">
                         <div class="relative mb-4">
-                        <label for="name" class="leading-7 text-sm text-gray-600">Address 1</label>
+                            <label for="name" class="leading-7 text-sm text-gray-600">Address 1</label>
                             <input type="text" id="name" name="name" v-model="addressForm.address1"
                                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
@@ -196,11 +197,11 @@ function submit() {
                         <button v-if="formFilled || userAddress"
                             class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Checkout</button>
                         <button v-else
-                        class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded text-lg">Add Address</button>
+                            class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded text-lg">Add
+                            Address</button>
                         <p class="text-xs text-gray-500 mt-3">Continue shopping</p>
                     </form>
                 </div>
             </div>
         </section>
-    </UserLayout>
-</template>
+    </UserLayout></template>
