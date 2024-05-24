@@ -70,10 +70,10 @@ function submit() {
 
                     <!-- list of cart -->
 
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="px-16 py-3">
+                                <th scope="col" class="px-6 py-3">
                                     <span class="sr-only">Image</span>
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -93,19 +93,21 @@ function submit() {
                         <tbody>
                             <tr v-for="product in products" :key="product.id"
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="p-4 w-60">
+                                <td class="w-32 p-4">
                                     <img v-if="product.product_images.length > 0"
-                                        :src="`/${product.product_images[0].image}`" alt="Apple Watch"
-                                        class="h-auto max-w-full">
+                                        :src="`/${product.product_images[0].image}`" alt="Apple Watch">
+                                    <img v-else
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png"
+                                        alt="Apple Watch">
                                 </td>
                                 <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                                     {{ product.title }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="flex items-center">
+                                    <div class="flex items-center space-x-3">
                                         <button @click.prevent="update(product, carts[itemId(product.id)].quantity - 1)"
                                             :disabled="carts[itemId(product.id)].quantity <= 1"
-                                            :class="[carts[itemId(product.id)].quantity > 1 ? 'cursor-pointer text-purple-600' : 'cursor-not-allowed text-gray-300 dark', 'inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700']"
+                                            :class="[carts[itemId(product.id)].quantity > 1 ? 'cursor-pointer text-purple-600' : 'cursor-not-allowed text-gray-300 dark:text-gray-500', 'inline-flex items-center justify-center p-1 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700']"
                                             type="button">
                                             <span class="sr-only">Quantity button</span>
                                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -118,10 +120,10 @@ function submit() {
                                             <input type="number" id="first_product"
                                                 v-model="carts[itemId(product.id)].quantity"
                                                 class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="1" required />
+                                                placeholder="1" required>
                                         </div>
                                         <button @click.prevent="update(product, carts[itemId(product.id)].quantity + 1)"
-                                            class="inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                                            class="inline-flex items-center justify-center h-6 w-6 p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                                             type="button">
                                             <span class="sr-only">Quantity button</span>
                                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -133,14 +135,13 @@ function submit() {
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                                    {{ price.format(product.price) }}
+                                    ${{ product.price }}
                                 </td>
                                 <td class="px-6 py-4">
                                     <a @click="remove(product)"
                                         class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</a>
                                 </td>
                             </tr>
-
                         </tbody>
                     </table>
 
