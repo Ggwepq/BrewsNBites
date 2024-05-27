@@ -9,13 +9,13 @@
 BrewsNBites is a Online Website where users can buy and order various kinds of coffees and foods to satisfy their hungry stomach.
 
 ## Features
-- Beautiful homepage
 - Add to cart function
-- Product description
 - Filter search
-- Dashboard w/ Sales Graph
+- Admin Controls
 - Adding and editing product
 - Multiple Image support
+- Checkout Function
+- Order List
 
 ## Project Installation
 
