@@ -135,7 +135,7 @@ function submit() {
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                                    ${{ product.price }}
+                                    {{ price.format(product.price) }}
                                 </td>
                                 <td class="px-6 py-4">
                                     <a @click="remove(product)"
@@ -167,32 +167,32 @@ function submit() {
                     <form @submit.prevent="submit">
                         <div class="relative mb-4">
                             <label for="name" class="leading-7 text-sm text-gray-600">Address 1</label>
-                            <input type="text" id="name" name="name" v-model="addressForm.address1"
+                            <input type="text" id="name" name="name" v-model="addressForm.address1" placeholder="Ex. 123 Tondo"
                                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="relative mb-4">
                             <label for="city" class="leading-7 text-sm text-gray-600">City</label>
-                            <input type="text" id="email" name="city" v-model="addressForm.city"
+                            <input type="text" id="email" name="city" v-model="addressForm.city" placeholder="Ex. Manila" 
                                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="relative mb-4">
                             <label for="region" class="leading-7 text-sm text-gray-600">Region</label>
-                            <input type="text" id="email" name="region" v-model="addressForm.region"
+                            <input type="text" id="email" name="region" v-model="addressForm.region" placeholder="Ex. NCR"
                                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="relative mb-4">
                             <label for="zip" class="leading-7 text-sm text-gray-600">Zipcode</label>
-                            <input type="text" id="name" name="zip" v-model="addressForm.zipcode"
+                            <input type="text" id="name" name="zip" v-model="addressForm.zipcode" placeholder="Ex. 1230"
                                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="relative mb-4">
-                            <label for="country" class="leading-7 text-sm text-gray-600">Country Code</label>
-                            <input type="text" id="email" name="country" v-model="addressForm.country_code"
+                            <label for="country" class="leading-7 text-sm text-gray-600">Country</label>
+                            <input type="text" id="email" name="country" v-model="addressForm.country_code" placeholder="Ex. Philippines"
                                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="relative mb-4">
                             <label for="type" class="leading-7 text-sm text-gray-600">Address Type</label>
-                            <input type="text" id="name" name="type" v-model="addressForm.type"
+                            <input type="text" id="name" name="type" v-model="addressForm.type" placeholder="Ex. Home"
                                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <button v-if="formFilled || userAddress"
@@ -200,7 +200,6 @@ function submit() {
                         <button v-else
                             class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded text-lg">Add
                             Address</button>
-                        <p class="text-xs text-gray-500 mt-3">Continue shopping</p>
                     </form>
                 </div>
             </div>

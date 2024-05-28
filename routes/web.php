@@ -20,7 +20,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/', [UserController::class, 'index'])->name('user.home');
 
 
-Route::get('/Dashboard',[DashboardController:: class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard',[DashboardController:: class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
